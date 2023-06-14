@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+
+const ObjectID = mongoose.Schema.Types.ObjectId;
+// const jwt = require('jsonwebtoken');
+// const { object } = require('sharp/lib/is');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -61,6 +64,23 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  EnrolledCourses: [
+    {
+      CourseId: {
+        type: ObjectID,
+        ref: 'Courses',
+      },
+      startDate: {
+        type: Date,
+      },
+      completionDate: {
+        type: Date,
+      },
+      ProgressBar: {
+        type: Number,
+      },
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {
@@ -120,8 +140,10 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
+  // eslint-disable-next-line no-undef
   const resetToken = crypto.randomBytes(32).toString('hex');
 
+  // eslint-disable-next-line no-undef
   this.passwordResetToken = crypto
     .createHash('sha256')
     .update(resetToken)
