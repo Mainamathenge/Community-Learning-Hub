@@ -12,8 +12,9 @@ const CourseSchema = new mongoose.Schema({
     lowercase: true,
   },
   category: {
-    type: ObjectID,
+    type: String,
     required: true,
+    enum: ['DataSience', 'WebDevelopment', 'BlockChain', 'MachineLearning'],
   },
   Description: {
     type: String,
