@@ -5,9 +5,10 @@ const Email = require('../utils/email');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const dotenv = require('dotenv');
 
 const signToken = id =>
-  jwt.sign({ id }, process.env.JWT_SECRET, {
+  jwt.sign({ id }, process.env.SECRET_TOKEN, {
     expiresIn: process.env.SECRETE_EXPIRES_IN,
   });
 
@@ -145,7 +146,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       500
     );
   }
-
+  //9va0REWfpyP9DhhV
   // 3) Send it to user's email (Challenge)
 });
 
