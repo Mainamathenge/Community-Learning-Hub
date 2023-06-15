@@ -23,6 +23,7 @@ const CourseSchema = new mongoose.Schema({
   Instrucctor: {
     type: ObjectID,
     required: true,
+    ref: 'User',
   },
   Lessons: [
     {
@@ -30,7 +31,7 @@ const CourseSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-      lessinId: {
+      lessonId: {
         type: ObjectID,
         required: true,
         ref: 'Lesson',
