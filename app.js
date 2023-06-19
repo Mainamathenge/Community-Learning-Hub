@@ -1,9 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
-const userRouter = require('./routes/userRoutes');
+
 const AppError = require('./utils/appError');
 
 const viewController = require('./routes/viewRoutes');
+const userRouter = require('./routes/userRoutes');
+const courseRouter = require('./routes/courseRoutes');
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // } )
 app.use('/', viewController);
 app.use('/users', userRouter);
+app.use('/courses', courseRouter);
 
 // app.use(cartRouter)
 
