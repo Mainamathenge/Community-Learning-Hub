@@ -14,16 +14,32 @@ const CourseSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['DataSience', 'WebDevelopment', 'BlockChain', 'MachineLearning'],
+    enum: [
+      'DataSience',
+      'WebDevelopment',
+      'BlockChain',
+      'MachineLearning',
+      'Business',
+    ],
   },
   Description: {
     type: String,
     required: true,
   },
-  Instrucctor: {
+  Instructor: {
     type: ObjectID,
     required: true,
     ref: 'User',
+  },
+  thumbnail: {
+    path: {
+      type: String,
+      required: true,
+    },
+    originalName: {
+      type: String,
+      required: true,
+    },
   },
   Lessons: [
     {

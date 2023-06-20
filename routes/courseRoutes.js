@@ -3,12 +3,15 @@ const courseHandler = require('../controllers/coursesHandler');
 
 const router = express.Router();
 
-router.route('/pic').post(courseHandler.uploadThumbnail);
+// create the courses
 router
-  .route('/:id')
+  .route('/')
   .post(courseHandler.createCourse)
   .get(courseHandler.getallcourse)
   .patch(courseHandler.updateCourse)
   .delete(courseHandler.deleteCourse);
+
+// upload the thumb nail
+router.route('/pic/:id').post(courseHandler.uploadThumbnail);
 
 module.exports = router;

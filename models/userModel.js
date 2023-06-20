@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['Community-Member', 'Admin', 'Community-lead', 'Trainer'],
+    enum: ['Community-Member', 'Admin', 'Community-lead', 'instructor'],
     required: true,
     default: 'Community-Member',
   },
@@ -102,15 +102,15 @@ userSchema.pre('save', function (next) {
   next();
 });
 
-// userSchema.pre('save', function (next) {
-//     // Check if the number starts with +254
-//     if (this.phone.toString().startsWith('+254')) {
-//         // Remove the plus sign
-//         this.phone = Number(this.number.slice(1));
-//     }
+userSchema.pre('save', function (next) {
+  // Check if the number starts with +254
+  if (this.phone.toString().startsWith('+254')) {
+    // Remove the plus sign
+    this.phone = Number(this.number.slice(1));
+  }
 
-//     next();
-//     });
+  next();
+});
 
 userSchema.pre(/^find/, function (next) {
   // this points to the current query

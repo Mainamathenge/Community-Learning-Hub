@@ -52,20 +52,21 @@ exports.uploadThumbnail = catchAsync(async (req, res, next) => {
     }
 
     // Retrieve the course ID from req.params
-    // const courseId = req.params.id;
+    const courseId = req.params.id;
+    //console.log(courseId);
 
-    // // Retrieve the uploaded thumbnail details
-    // const {file} = req;
-    // const imagePath = file.path;
-    // const originalFileName = file.originalname;
+    // Retrieve the uploaded thumbnail details
+    const { file } = req;
+    const imagePath = file.path;
+    const originalFileName = file.originalname;
 
     // Update the course with the thumbnail information
-    // const course = await Course.findById(courseId);
-    // course.thumbnail = {
-    //   path: imagePath,
-    //   originalName: originalFileName,
-    // };
-    // await course.save();
+    const course = await Course.findById(courseId);
+    course.thumbnail = {
+      path: imagePath,
+      originalName: originalFileName,
+    };
+    await course.save();
 
     // Send a response to the client
     res.send('Success, thumbnail uploaded!');
