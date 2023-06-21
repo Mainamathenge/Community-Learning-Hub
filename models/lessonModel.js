@@ -3,31 +3,33 @@ const mongoose = require('mongoose');
 const ObjectID = mongoose.Schema.Types.ObjectId;
 
 const lessonSchema = new mongoose.Schema({
+  course: {
+    type: ObjectID,
+    ref: 'Course',
+  },
   title: {
     type: String,
     required: true,
     trim: true,
     lowercase: true,
   },
-  category: {
-    type: ObjectID,
-    required: true,
-  },
   Description: {
     type: String,
     required: true,
   },
-  Instructor: {
-    type: ObjectID,
-    required: true,
-  },
   contenttype: {
     type: String,
-    enum: ['PDF', 'Video', 'Presentation', 'Audio'],
+    required: true,
+  },
+  contentpath: {
+    type: String,
+  },
+  lessonNo: {
+    type: Number,
     required: true,
   },
   duration: {
-    type: Number,
+    type: String,
     required: true,
   },
   createdAt: {

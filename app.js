@@ -6,6 +6,7 @@ const AppError = require('./utils/appError');
 const viewController = require('./routes/viewRoutes');
 const userRouter = require('./routes/userRoutes');
 const courseRouter = require('./routes/courseRoutes');
+const lessonRouter = require('./routes/LessonRoutes');
 
 const app = express();
 
@@ -26,8 +27,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use('/', viewController);
 app.use('/users', userRouter);
 app.use('/courses', courseRouter);
-
-// app.use(cartRouter)
+app.use('/lessons', lessonRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
