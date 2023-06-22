@@ -2,8 +2,9 @@ const path = require('path');
 const multer = require('multer');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const factory = require('./handlerFactory');
+//const factory = require('./handlerFactory');
 const Lesson = require('../models/lessonModel');
+const Course = require('../models/courseCollection');
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -32,17 +33,25 @@ exports.deleteOne = Model =>
     });
   });
 
-exports.createOne = Model =>
-  catchAsync(async (req, res, next) => {
-    const doc = await Model.create(req.body);
+module.exports.createOne = catchAsync(async (req, res, next) => {
+  const course = await Course.findById(req.body.course);
+  const doc = await Lesson.create(req.body);
 
-    res.status(201).json({
-      status: 'success',
-      data: {
-        data: doc,
-      },
-    });
+  course.Lessons = [
+    {
+      lessonNo: doc.lessonNo,
+      lessonId: doc._id,
+    },
+  ];
+  await course.save();
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      data: doc,
+    },
   });
+});
 
 exports.uploadContent = catchAsync(async (req, res, next) => {
   upload.single('Content')(req, res, async err => {
@@ -69,7 +78,7 @@ exports.uploadContent = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getalllessons = factory.getAll(Lesson);
-exports.createlesson = factory.createOne(Lesson);
-exports.updatelesson = factory.updateOne(Lesson);
-exports.deletelesson = factory.deleteOne(Lesson);
+// exports.getalllessons = factory.getAll(Lesson);
+// exports.createlesson = factory.createOne(Lesson);
+// exports.updatelesson = factory.updateOne(Lesson);
+// exports.deletelesson = factory.deleteOne(Lesson);

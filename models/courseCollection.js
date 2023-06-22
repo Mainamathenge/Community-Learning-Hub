@@ -34,11 +34,9 @@ const CourseSchema = new mongoose.Schema({
   thumbnail: {
     path: {
       type: String,
-      required: true,
     },
     originalName: {
       type: String,
-      required: true,
     },
   },
   Lessons: [
