@@ -1,28 +1,38 @@
+# Introduction
 
-# Node.js E-commerce Backend Application Documentation
-This documentation provides an overview of the features and functionalities of the Node.js E-commerce Backend Application. 
-This application serves as the backend for an e-commerce platform with payment features implemented using the Safaricom STK push. 
-Additionally, it utilizes the Nodemailer email API to send email messages to end users, with email templates written using Pug.
+Community Forum is an open-source project aimed at creating an inclusive and collaborative platform for knowledge sharing, networking, and learning. 
+It provides community members with a space to connect, exchange ideas, access learning resources, and discover new opportunities.
 
 ## Features
-### 1. E-commerce Functionality
-The Node.js E-commerce Backend Application provides a robust set of features to facilitate the e-commerce operations. These include:
 
-Product management: CRUD operations for managing products in the e-commerce platform.
-User management: Authentication and authorization mechanisms for user registration, login, and profile management.
-Cart management: Ability to add products to a cart, update quantities, and proceed to checkout.
-Order management: Handling the process of placing and managing orders, including order status updates.
-### 2. Safaricom STK Push Integration
-To enable seamless payment processing, the application integrates with the Safaricom STK push feature. 
-This integration allows users to make payments using their mobile money accounts.
-The application securely communicates with the Safaricom API to initiate payment requests and handle the response callbacks.
+### Learning Materials: &check;
+Members can upload and share learning materials, including articles, tutorials, videos, and more. 
+This fosters a culture of knowledge sharing within the community.The file upload is currently local
+looking to upgrade it to use an S3 bucket 
 
-### 3. Nodemailer Email API
-The Node.js E-commerce Backend Application utilizes the Nodemailer email API to send email messages to end users. 
-This feature enables important communications such as order confirmations, shipping notifications, and password reset instructions. 
-The application supports sending emails in both HTML and plain text formats.
+### User Profiles: &check;
+Each member has a personalized profile that showcases their interests, skills, and contributions to the community. 
+This facilitates better networking and helps users discover like-minded individuals.
+this section complete
 
-### 4. Email Templates with Pug
-To create visually appealing and dynamic email templates, the application employs the Pug templating engine.
-Pug simplifies the process of generating HTML email content by providing a concise syntax with powerful templating capabilities. 
-The email templates can be customized to match the branding and design requirements of the e-commerce platform.
+### Notifications: &check;
+Members receive notifications about new learning materials, course updates, and forum activities to stay informed and engaged.
+The notifiactions has been impleamented using nodemailer for sign-up password reset and logic 
+
+### Free Online Course Academy: &check; 
+The platform offers a self-paced online course academy where members can enroll in various courses. 
+These courses cover a wide range of topics and cater to different skill levels.
+#### Uploading Content &check;
+The verified tutors can upload content create courses and add lessons
+#### Enrolling to content &cross;
+The endpoint for this section is still in progress
+
+### Chat Section: &cross;
+The forum includes a chat section that enables members to engage in real-time discussions, ask questions, seek advice, and share opportunities. 
+This promotes networking and collaboration among community members.
+This section has not be impleamented yet I will be working on it after the front end is done
+
+
+
+
+
